@@ -1,7 +1,7 @@
 import { Link } from 'gatsby';
 import React from 'react';
 
-const Header = ({ siteTitle }) => (
+const Header = ({ siteTitle = '' }) => (
   <header
     style={{
       background: `rebeccapurple`,
@@ -29,9 +29,5 @@ const Header = ({ siteTitle }) => (
     </div>
   </header>
 );
-
-Header.defaultProps = {
-  siteTitle: ``
-};
 
 export default Header;
