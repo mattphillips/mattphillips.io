@@ -3,11 +3,15 @@
   "private": true,
   "version": "0.1.0",
   "dependencies": {
+    "autoprefixer": "^9.7.4",
+    "cssnano": "^4.1.10",
     "gatsby": "^2.19.7",
     "gatsby-image": "^2.2.39",
     "gatsby-plugin-graphql-codegen": "^2.2.2",
     "gatsby-plugin-manifest": "^2.2.39",
     "gatsby-plugin-offline": "^3.0.32",
+    "gatsby-plugin-postcss": "^2.1.20",
+    "gatsby-plugin-purgecss": "^4.0.1",
     "gatsby-plugin-react-helmet": "^3.1.21",
     "gatsby-plugin-sharp": "^2.4.3",
     "gatsby-plugin-typescript": "^2.1.27",
@@ -16,6 +20,7 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^5.2.1",
+    "tailwindcss": "^1.2.0",
     "typescript": "^3.7.5"
   },
   "devDependencies": {
