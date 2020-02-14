@@ -1,5 +1,73 @@
 /* purgecss start ignore */
 @tailwind base;
+
+@import url("https://fonts.googleapis.com/css?family=Nunito:600");
+@import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,600,900");
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  background: #fff;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #000;
+  margin: 0;
+}
+
+hr {
+  margin: 2rem 0;
+  border: 1px solid #e6e6e6;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: black;
+  font-family: "Nunito", sans-serif;
+  font-weight: 600;
+}
+
+h1 {
+  font-size: 42px;
+  line-height: 50px;
+}
+
+h2 {
+  font-size: 36px;
+  line-height: 44px;
+}
+
+h3 {
+  font-size: 32px;
+  line-height: 38px;
+}
+
+h4 {
+  font-size: 24px;
+  line-height: 29px;
+}
+
+h5 {
+  font-size: 20px;
+  line-height: 24px;
+}
+
+h6 {
+  font-size: 18px;
+  line-height: 22px;
+}
+
 @tailwind components;
 /* purgecss end ignore */
+
 @tailwind utilities;

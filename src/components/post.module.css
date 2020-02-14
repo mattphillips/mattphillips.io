@@ -1,0 +1,61 @@
+/* TODO: pull out colours */
+.post {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.post blockquote {
+  padding-left: 1rem;
+  color: hsla(0, 0%, 0%, 0.59);
+  font-style: italic;
+  border-left: 0.25rem solid #5c3ff3;
+}
+
+.post ol,
+.post ul {
+  list-style: disc;
+  margin-left: 1rem;
+}
+
+.post blockquote,
+.post dd,
+.post dl,
+.post figure,
+.post h1,
+.post h2,
+.post h3,
+.post h4,
+.post h5,
+.post h6,
+.post hr,
+.post p,
+.post pre,
+.post ul,
+.post ol {
+  margin-bottom: 1rem;
+}
+
+.post li {
+  margin-bottom: 0.5rem;
+}
+
+.post li:last-child {
+  margin-bottom: 0;
+}
+
+.post a {
+  color: #5c3ff3;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* The content padding needs to match the size of the image */
+.image {
+  height: 30vh;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.content {
+  padding-top: 30vh;
+}
