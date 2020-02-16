@@ -32,7 +32,7 @@ export default ({
               </Link>
             </div>
 
-            <div className="px-6">
+            <div className="px-6 pb-6">
               <header className="mb-6">
                 <h1 className="leading-tight mb-2">{frontmatter.title}</h1>
                 <PostMeta date={frontmatter.date} timeToRead={timeToRead} />

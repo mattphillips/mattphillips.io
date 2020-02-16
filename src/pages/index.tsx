@@ -29,8 +29,8 @@ const Home = ({
               timeToRead
             }
           }) => (
-            <Link to={slug} className="mb-4" key={slug}>
-              <article key={slug} className="rounded-lg shadow-lg h-full" style={{ maxWidth: 264, margin: 16 }}>
+            <Link to={slug} className="m-4" key={slug}>
+              <article key={slug} className="rounded-lg shadow-lg h-full" style={{ maxWidth: 264 }}>
                 <img src={image.publicURL} alt={imageDescription} className="rounded-t-xl block h-48 w-full" />
                 <div className="p-4 text-gray-900">
                   <header className="mb-4">
