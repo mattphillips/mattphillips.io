@@ -26,7 +26,7 @@ export default ({
 
         <div className={`h-screen absolute top-0 left-0 right-0 bottom-0 ${styles.content}`}>
           <div className="sm:rounded-t-none rounded-t-xxl bg-white -mt-8">
-            <div className="p-6 sticky top-0 bg-white sm:rounded-none rounded-t-xxl flex flex-row justify-between z-30">
+            <div className="p-4 sticky top-0 bg-white sm:rounded-none rounded-t-xxl flex flex-row justify-between z-30">
               <Link className="p-2" to={Route.HOME}>
                 <Back />
               </Link>
