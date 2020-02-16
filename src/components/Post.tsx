@@ -7,12 +7,13 @@ import { BlogPostBySlugQuery } from '../../types/graphql-types';
 import { Back } from './icons/Back';
 import { Bookmark } from './icons/Bookmark';
 import { RecursiveRequired } from '../types/gql';
+import { PostMeta } from './PostMeta';
 
 type Post = { data: RecursiveRequired<BlogPostBySlugQuery> };
 
 export default ({
   data: {
-    markdownRemark: { frontmatter, html }
+    markdownRemark: { frontmatter, html, timeToRead }
   }
 }: Post) => {
   return (
@@ -31,9 +32,9 @@ export default ({
             </div>
 
             <div className="px-6">
-              <header>
+              <header className="mb-6">
                 <h1 className="leading-tight mb-2">{frontmatter.title}</h1>
-                <div className="mb-6 text-xs text-gray-600">{frontmatter.date}</div>
+                <PostMeta date={frontmatter.date} timeToRead={timeToRead} />
               </header>
               <section className={styles.post} dangerouslySetInnerHTML={{ __html: html }} />
             </div>
@@ -49,6 +50,7 @@ export const pageQuery = graphql`
     markdownRemark(fields: { slug: { eq: $slug } }) {
       id
       html
+      timeToRead
       frontmatter {
         title
         date(formatString: "DD MMMM, YYYY")

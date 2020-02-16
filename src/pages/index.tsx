@@ -5,6 +5,7 @@ import SEO from '../components/seo';
 import { AllPostsQuery } from '../../types/graphql-types';
 import { RecursiveRequired } from '../types/gql';
 import { Page } from '../components/Page';
+import { PostMeta } from '../components/PostMeta';
 import { Route } from '../Config';
 
 type Props = { data: RecursiveRequired<AllPostsQuery> };
@@ -24,16 +25,17 @@ const Home = ({
           ({
             node: {
               frontmatter: { date, description, image, imageDescription, title },
-              fields: { slug }
+              fields: { slug },
+              timeToRead
             }
           }) => (
             <Link to={slug} className="mb-4">
               <article key={slug} className="rounded-lg shadow-lg h-full" style={{ maxWidth: 264, margin: 16 }}>
                 <img src={image.publicURL} alt={imageDescription} className="rounded-t-xl block h-48 w-full" />
                 <div className="p-4 text-gray-900">
-                  <header>
+                  <header className="mb-4">
                     <h4 className="mb-2">{title}</h4>
-                    <small className="mb-4 text-xs text-gray-600 block">{date}</small>
+                    <PostMeta date={date} timeToRead={timeToRead} />
                   </header>
                   <section>
                     <p dangerouslySetInnerHTML={{ __html: description }} />
@@ -56,6 +58,7 @@ export const pageQuery = graphql`
       edges {
         node {
           excerpt
+          timeToRead
           fields {
             slug
           }
