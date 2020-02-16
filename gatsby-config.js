@@ -17,8 +17,8 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/src/posts`,
-        name: `blog`,
-      },
+        name: `blog`
+      }
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
@@ -64,10 +64,11 @@ module.exports = {
             resolve: `gatsby-remark-images`,
             options: {
               // TODO: decide on this size
-              maxWidth: 728,
-            },
+              maxWidth: 728
+            }
           },
-          `gatsby-remark-copy-linked-files`
+          `gatsby-remark-copy-linked-files`,
+          `gatsby-remark-prismjs`
         ]
       }
     }
