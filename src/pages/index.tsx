@@ -20,7 +20,7 @@ const Home = ({
     <SEO title="mattphillips.io" />
 
     <Page current={Route.HOME}>
-      <div className="flex flex-row flex-wrap justify-center pb-16">
+      <div className="flex flex-row flex-wrap justify-center">
         {posts.map(
           ({
             node: {
