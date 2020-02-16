@@ -1,5 +1,5 @@
 import React from 'react';
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
 import SEO from './seo';
 import styles from './post.module.css';
 
@@ -8,6 +8,8 @@ import { Back } from './icons/Back';
 import { Bookmark } from './icons/Bookmark';
 import { RecursiveRequired } from '../types/gql';
 import { PostMeta } from './PostMeta';
+import { Link } from './Link';
+import { Route } from '../Config';
 
 type Post = { data: RecursiveRequired<BlogPostBySlugQuery> };
 
@@ -25,10 +27,9 @@ export default ({
         <div className={`h-screen absolute top-0 left-0 right-0 bottom-0 ${styles.content}`}>
           <div className="sm:rounded-t-none rounded-t-xxl bg-white -mt-8">
             <div className="p-6 sticky top-0 bg-white sm:rounded-none rounded-t-xxl flex flex-row justify-between z-30">
-              <Link to="/">
+              <Link className="p-2" to={Route.HOME}>
                 <Back />
               </Link>
-              <Bookmark />
             </div>
 
             <div className="px-6">
