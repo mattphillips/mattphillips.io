@@ -51,6 +51,9 @@
 
 /* The content padding needs to match the size of the image */
 .image {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   height: 30vh;
   left: 50%;
   transform: translateX(-50%);

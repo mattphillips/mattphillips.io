@@ -12,38 +12,38 @@ import { Route } from '../Config';
 
 type Post = { data: RecursiveRequired<BlogPostBySlugQuery> };
 
-const Header = ({ title}: { title: string }) => {
-  const [isSticky, setIsSticky] = React.useState(false)
-  const ref = React.createRef<HTMLDivElement>()
-  
-  // mount 
-  React.useEffect(()=>{
-    const cachedRef = ref.current;
-    const observer = new IntersectionObserver(
-      ([e]) => setIsSticky(e.intersectionRatio < 1),
-      {threshold: [1]}
-    )
+const Header = ({ title }: { title: string }) => {
+  const [isSticky, setIsSticky] = React.useState(false);
+  const ref = React.createRef<HTMLDivElement>();
 
-    observer.observe(cachedRef!)
-    
+  // mount
+  React.useEffect(() => {
+    const cachedRef = ref.current;
+    const observer = new IntersectionObserver(([e]) => setIsSticky(e.intersectionRatio < 1), { threshold: [1] });
+
+    observer.observe(cachedRef!);
+
     // unmount
     return () => {
-      observer.unobserve(cachedRef!)
-    }
-  }, [])
+      observer.unobserve(cachedRef!);
+    };
+  }, []);
 
   const styles = isSticky ? 'rounded-none shadow-lg' : 'sm:rounded-none rounded-t-xxl';
-  
+
   return (
-    <div className={`${styles} p-4 sticky bg-white flex flex-row items-center z-30 w-full`} style={{top: -1}} ref={ref}>
+    <div
+      className={`${styles} p-4 sticky bg-white flex flex-row items-center z-30 w-full`}
+      style={{ top: -1 }}
+      ref={ref}
+    >
       <Link className="p-2" to={Route.HOME}>
         <Back />
       </Link>
-        {isSticky && <h6 className="mb-0 truncate" >{title}</h6>}
+      {isSticky && <h6 className="mb-0 truncate">{title}</h6>}
     </div>
-  )
-}
-
+  );
+};
 
 export default ({
   data: {
@@ -54,7 +54,12 @@ export default ({
     <main>
       <SEO title={frontmatter.title} description={frontmatter.description} />
       <article className="w-full max-w-2xl mx-auto relative">
-        <img className={`max-w-2xl w-full m-0 block top-0 fixed ${styles.image}`} src={frontmatter.image.publicURL} />
+        <div
+          className={`max-w-2xl w-full m-0 block top-0 fixed ${styles.image}`}
+          style={{
+            backgroundImage: `url("${frontmatter.image.publicURL}")`
+          }}
+        />
 
         <div className={`h-screen absolute top-0 left-0 right-0 bottom-0 ${styles.content}`}>
           <div className="sm:rounded-t-none rounded-t-xxl bg-white -mt-8">
