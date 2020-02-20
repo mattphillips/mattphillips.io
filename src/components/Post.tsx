@@ -12,7 +12,7 @@ import { Route } from '../Config';
 
 type Post = { data: RecursiveRequired<BlogPostBySlugQuery> };
 
-const Header = ({ title }: { title: string }) => {
+const Header = ({ image, title }: { title: string; image: { src: string; alt: string } }) => {
   const [isSticky, setIsSticky] = React.useState(false);
   const ref = React.createRef<HTMLDivElement>();
 
@@ -40,6 +40,7 @@ const Header = ({ title }: { title: string }) => {
       <Link className="p-2" to={Route.HOME}>
         <Back />
       </Link>
+      {isSticky && <img src={image.src} alt={image.alt} className="w-8 h-8 rounded-md mr-2" />}
       {isSticky && <h6 className="mb-0 truncate">{title}</h6>}
     </div>
   );
@@ -63,7 +64,10 @@ export default ({
 
         <div className={`h-screen absolute top-0 left-0 right-0 bottom-0 ${styles.content}`}>
           <div className="sm:rounded-t-none rounded-t-xxl bg-white -mt-8">
-            <Header title={frontmatter.title} />
+            <Header
+              image={{ src: frontmatter.image.publicURL, alt: frontmatter.imageDescription }}
+              title={frontmatter.title}
+            />
             <div className="px-6 pb-6">
               <header className="mb-6">
                 <h1 className="leading-tight mb-2">{frontmatter.title}</h1>
@@ -91,6 +95,7 @@ export const pageQuery = graphql`
         image {
           publicURL
         }
+        imageDescription
       }
     }
   }
