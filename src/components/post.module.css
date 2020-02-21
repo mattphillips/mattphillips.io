@@ -10,6 +10,7 @@
   color: hsla(0, 0%, 0%, 0.59);
   font-style: italic;
   border-left-width: 0.25rem;
+  margin-left: 0;
 }
 
 .post ol,
