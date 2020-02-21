@@ -1,5 +1,5 @@
 import React from 'react';
-import { graphql } from 'gatsby';
+import { graphql, Link as GatsbyLink } from 'gatsby';
 import SEO from './seo';
 import styles from './post.module.css';
 
@@ -9,8 +9,19 @@ import { RecursiveRequired } from '../types/gql';
 import { PostMeta } from './PostMeta';
 import { Link } from './Link';
 import { Route } from '../Config';
+import pic from '../images/profile.png';
+import { Github } from './icons/Github';
+import { Twitter } from './icons/Twitter';
 
-type Post = { data: RecursiveRequired<BlogPostBySlugQuery> };
+type Article = { fields: { slug: string }; frontmatter: { title: string } };
+
+type Post = {
+  data: RecursiveRequired<BlogPostBySlugQuery>;
+  pageContext: {
+    next?: Article;
+    previous?: Article;
+  };
+};
 
 const Header = ({ image, title }: { title: string; image: { src: string; alt: string } }) => {
   const [isSticky, setIsSticky] = React.useState(false);
@@ -49,7 +60,8 @@ const Header = ({ image, title }: { title: string; image: { src: string; alt: st
 export default ({
   data: {
     markdownRemark: { frontmatter, html, timeToRead }
-  }
+  },
+  pageContext: { next, previous }
 }: Post) => {
   return (
     <main>
@@ -65,20 +77,72 @@ export default ({
         <div className={`h-screen absolute top-0 left-0 right-0 bottom-0 ${styles.content}`}>
           <div className="sm:rounded-t-none rounded-t-xxl bg-white -mt-8">
             {frontmatter.image.credit && (
-              <div className="text-center pt-2">
-                Photo by <a className="text-purple-500 font-semibold" href={frontmatter.image.credit.url}>{frontmatter.image.credit.name}</a>
+              <div className="text-center pt-4">
+                Photo by{' '}
+                <a className="text-purple-500 font-semibold" href={frontmatter.image.credit.url}>
+                  {frontmatter.image.credit.name}
+                </a>
               </div>
             )}
             <Header
               image={{ src: frontmatter.image.src.publicURL, alt: frontmatter.image.alt }}
               title={frontmatter.title}
             />
-            <div className="px-6 pb-6">
+            <div className="px-6">
               <header className="mb-6">
                 <h1 className="leading-tight mb-2">{frontmatter.title}</h1>
                 <PostMeta date={frontmatter.date} timeToRead={timeToRead} />
               </header>
               <section className={styles.post} dangerouslySetInnerHTML={{ __html: html }} />
+              <footer className="py-8">
+                <p>
+                  <ExternalLink href="#">Discuss on Twitter</ExternalLink>
+                  <span className="text-2xl"> • </span>
+                  <ExternalLink href="#">Edit on GitHub</ExternalLink>
+                </p>
+                <hr />
+                <div className="flex flex-row items-start md:items-center mb-4">
+                  <img className="rounded-full h-24 mr-4" src={pic} alt="Matt Phillips" />
+                  <p>
+                    Hey I'm Matt 👋, well done for reading this far down the page. If you feel some type of way about
+                    what I've written above, I'd love to hear from you — hit me up on{' '}
+                    <ExternalLink href="">Twitter</ExternalLink>.
+                  </p>
+                </div>
+
+                <hr />
+
+                <nav>
+                  <ul className="flex">
+                    <li className="flex-1 pr-4">
+                      {previous && (
+                        <GatsbyLink className="font-semibold underline" to={previous.fields.slug} rel="prev">
+                          ← {previous.frontmatter.title}
+                        </GatsbyLink>
+                      )}
+                    </li>
+                    <li className="flex-1">
+                      {next && (
+                        <GatsbyLink className="font-semibold underline" to={next.fields.slug} rel="next">
+                          {next.frontmatter.title} →
+                        </GatsbyLink>
+                      )}
+                    </li>
+                  </ul>
+                </nav>
+              </footer>
+            </div>
+            <div className="flex justify-center bg-purple-500 w-full p-2">
+              <ExternalLink href="#">
+                <span className="flex items-center justify-center text-purple-100 h-10 w-10">
+                  <Github />
+                </span>
+              </ExternalLink>
+              <ExternalLink className="ml-4" href="#">
+                <span className="flex items-center justify-center text-purple-100 h-10 w-10">
+                  <Twitter />
+                </span>
+              </ExternalLink>
             </div>
           </div>
         </div>
@@ -86,6 +150,26 @@ export default ({
     </main>
   );
 };
+
+// TODO: pull this out and restrict the routes
+const ExternalLink = ({
+  className = '',
+  children,
+  href
+}: {
+  className?: string;
+  children: React.ReactNode;
+  href: string;
+}) => (
+  <a
+    className={`${className} font-semibold text-base text-purple-500 hover:text-purple-300`}
+    href={href}
+    rel="noopener"
+    target="_blank"
+  >
+    {children}
+  </a>
+);
 
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {

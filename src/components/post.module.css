@@ -50,6 +50,10 @@
   font-weight: 600;
 }
 
+.post a:hover {
+  @apply text-purple-300;
+}
+
 /* The content padding needs to match the size of the image */
 .image {
   background-size: cover;
