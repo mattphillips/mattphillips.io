@@ -2,8 +2,12 @@
 title: Hello World
 date: "2015-05-01T22:12:03.284Z"
 description: "Hello World"
-image: ./example.jpeg
-imageDescription: "Example"
+image:
+  src: ./example.jpeg
+  alt: "Example"
+  credit:
+   name: Emre Öztürk
+   url: https://unsplash.com/photos/lfyKGQWEbew
 ---
 
 # Heading 1

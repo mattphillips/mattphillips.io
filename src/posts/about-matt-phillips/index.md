@@ -2,8 +2,9 @@
 title: const about = () => 'Matt Phillips'
 date: "2017-09-20T22:12:03.284Z"
 description: "Here it is, my obligatory first blog post 🎉. Hey! I’m Matt Phillips an Open Source Software Engineer from London 🏙"
-image: ./feet-up.jpeg
-imageDescription: "Matt Phillips coding"
+image:
+  src: ./feet-up.jpeg
+  alt: "Matt Phillips coding"
 ---
 
 Here it is, my obligatory first blog post 🎉. Hey! I’m Matt Phillips an Open Source Software Engineer from London 🏙

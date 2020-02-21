@@ -2,8 +2,9 @@
 title: Hacktoberfest 🎃🃏 — get involved in OSS with jest-extended
 date: "2017-10-23T22:12:03.284Z"
 description: "Getting into open-source-software"
-image: ./mount-tiede.jpeg
-imageDescription: "Mount tiede"
+image:
+  src: ./mount-tiede.jpeg
+  alt: "Mount tiede"
 ---
 
 Want to get involved in open source software but don’t know where to begin? We’ve all been there! Hacktoberfest is a great incentive for people to start contributing back to the OSS community and you can get yourself some free swag 👕. With the clock ticking down on Hacktoberfest — I’ve got a new open source project that you’re more than to contribute to! [jest-extended](https://github.com/mattphillips/jest-extended) 🎉

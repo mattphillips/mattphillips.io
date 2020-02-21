@@ -24,14 +24,14 @@ const Home = ({
         {posts.map(
           ({
             node: {
-              frontmatter: { date, description, image, imageDescription, title },
+              frontmatter: { date, description, image, title },
               fields: { slug },
               timeToRead
             }
           }) => (
             <Link to={slug} className="m-4" key={slug}>
               <article key={slug} className="rounded-lg shadow-lg h-full" style={{ maxWidth: 264 }}>
-                <img src={image.publicURL} alt={imageDescription} className="rounded-t-xl block h-48 w-full" />
+                <img src={image.src.publicURL} alt={image.alt} className="rounded-t-xl block h-48 w-full" />
                 <div className="p-4 text-gray-900">
                   <header className="mb-4">
                     <h4 className="mb-2">{title}</h4>
@@ -67,9 +67,11 @@ export const pageQuery = graphql`
             title
             description
             image {
-              publicURL
+              alt
+              src {
+                publicURL
+              }
             }
-            imageDescription
           }
         }
       }

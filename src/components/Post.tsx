@@ -40,7 +40,7 @@ const Header = ({ image, title }: { title: string; image: { src: string; alt: st
       <Link className="p-2" to={Route.HOME}>
         <Back />
       </Link>
-      {isSticky && <img src={image.src} alt={image.alt} className="w-8 h-8 rounded-md mr-2" />}
+      {isSticky && <img src={image.src} alt={image.alt} className="min-w-8 w-8 h-8 rounded-md mr-2" />}
       {isSticky && <h6 className="mb-0 truncate">{title}</h6>}
     </div>
   );
@@ -58,14 +58,19 @@ export default ({
         <div
           className={`max-w-2xl w-full m-0 block top-0 fixed ${styles.image}`}
           style={{
-            backgroundImage: `url("${frontmatter.image.publicURL}")`
+            backgroundImage: `url("${frontmatter.image.src.publicURL}")`
           }}
         />
 
         <div className={`h-screen absolute top-0 left-0 right-0 bottom-0 ${styles.content}`}>
           <div className="sm:rounded-t-none rounded-t-xxl bg-white -mt-8">
+            {frontmatter.image.credit && (
+              <div className="text-center pt-2">
+                Photo by <a className="text-purple-500 font-semibold" href={frontmatter.image.credit.url}>{frontmatter.image.credit.name}</a>
+              </div>
+            )}
             <Header
-              image={{ src: frontmatter.image.publicURL, alt: frontmatter.imageDescription }}
+              image={{ src: frontmatter.image.src.publicURL, alt: frontmatter.image.alt }}
               title={frontmatter.title}
             />
             <div className="px-6 pb-6">
@@ -93,9 +98,15 @@ export const pageQuery = graphql`
         date(formatString: "DD MMMM, YYYY")
         description
         image {
-          publicURL
+          alt
+          credit {
+            name
+            url
+          }
+          src {
+            publicURL
+          }
         }
-        imageDescription
       }
     }
   }
