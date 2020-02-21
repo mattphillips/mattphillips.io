@@ -6,7 +6,7 @@ import { Route } from '../Config';
 const About = () => (
   <Page current={Route.ABOUT}>
     <div className="px-6">
-      <h4>Hey I'm Matt Phillips 👋</h4>
+      <h4>Hey I'm Matt 👋</h4>
 
       <p className="my-4">
         I'm a London based software engineer with a passion for solving complex problems with elegant solutions; writing
