@@ -77,9 +77,9 @@ export default ({
         <div className={`h-screen absolute top-0 left-0 right-0 bottom-0 ${styles.content}`}>
           <div className="sm:rounded-t-none rounded-t-xxl bg-white -mt-8">
             {frontmatter.image.credit && (
-              <div className="text-center pt-4">
+              <div className="text-center pt-3 text-sm text-gray-700">
                 Photo by{' '}
-                <a className="text-purple-500 font-semibold" href={frontmatter.image.credit.url}>
+                <a className="font-semibold" href={frontmatter.image.credit.url}>
                   {frontmatter.image.credit.name}
                 </a>
               </div>
