@@ -151,8 +151,8 @@ pre {
 
 /* Inline code */
 :not(pre) > code[class*='language-'] {
-  @apply text-purple-500;
-  @apply bg-purple-100;
+  @apply bg-gray-200;
+  color: rgb(255, 35, 80);
   border-radius: 4px;
   padding: 0.15em 0.3em;
   white-space: normal;
@@ -160,7 +160,7 @@ pre {
 
 :not(pre) > a > code[class*='language-'] {
   @apply text-purple-500;
-  @apply bg-purple-100;
+  @apply bg-gray-200;
   text-decoration: underline;
   font-size: inherit;
   white-space: pre-wrap;
