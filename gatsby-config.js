@@ -2,7 +2,17 @@ module.exports = {
   siteMetadata: {
     title: 'Matt Phillips',
     description: `TBD.`,
-    author: ``
+    author: `Matt Phillips`,
+    social: {
+      github: {
+        handle: 'mattphillips',
+        url: 'https://github.com/mattphillips'
+      },
+      twitter: {
+        handle: 'mattphillipsio',
+        url: 'https://twitter.com/mattphillipsio'
+      }
+    }
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
