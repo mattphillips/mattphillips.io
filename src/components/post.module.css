@@ -1,14 +1,15 @@
-/* TODO: pull out colours */
 .post {
   font-size: 18px;
   line-height: 1.6;
 }
 
 .post blockquote {
+  @apply border-purple-500;
+  border-style: solid;
   padding-left: 1rem;
   color: hsla(0, 0%, 0%, 0.59);
   font-style: italic;
-  border-left: 0.25rem solid #5c3ff3;
+  border-left-width: 0.25rem;
 }
 
 .post ol,
@@ -44,7 +45,7 @@
 }
 
 .post a {
-  color: #5c3ff3;
+  @apply text-purple-500;
   text-decoration: none;
   font-weight: 600;
 }

@@ -149,21 +149,19 @@ pre {
   font-style: italic;
 }
 
-/* TODO: pull colours out of TW theme */
-
 /* Inline code */
-:not(pre) > code[class*="language-"] {
+:not(pre) > code[class*='language-'] {
+  @apply text-purple-500;
+  @apply bg-purple-100;
   border-radius: 4px;
-  background: #EBE7FD;
-  color: #350FF0;
   padding: 0.15em 0.3em;
   white-space: normal;
 }
 
-:not(pre) > a > code[class*="language-"] {
+:not(pre) > a > code[class*='language-'] {
+  @apply text-purple-500;
+  @apply bg-purple-100;
   text-decoration: underline;
-  color: #350FF0;
-  background: #EBE7FD;
   font-size: inherit;
   white-space: pre-wrap;
 }
@@ -172,20 +170,22 @@ pre {
 
 /* Gatsby specifics */
 .gatsby-highlight-code-line {
+  @apply border-purple-400;
+  border-style: solid;
   background-color: rgba(134, 111, 246, 0.25);
   display: block;
   margin-right: -1em;
   margin-left: -1em;
   padding-right: 1em;
   padding-left: 0.75em;
-  border-left: 0.25em solid #866FF6;
+  border-left-width: 0.25em;
 }
 
 /**
  * Add back the container background-color, border-radius, padding, margin
  * and overflow that we removed from <pre>.
  */
- .gatsby-highlight {
+.gatsby-highlight {
   background-color: #011627;
   border-radius: 0.3em;
   margin: 0.5em 0;
@@ -200,7 +200,7 @@ pre {
  * 2. Always fill the visible space in .gatsby-highlight.
  * 3. Adjust the position of the line numbers
  */
-.gatsby-highlight pre[class*="language-"] {
+.gatsby-highlight pre[class*='language-'] {
   background-color: transparent;
   margin: 0;
   padding: 0;
