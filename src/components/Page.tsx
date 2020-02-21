@@ -5,7 +5,7 @@ import { Stats } from './icons/Stats';
 import { Profile } from './icons/Profile';
 import { Home } from './icons/Home';
 
-import pic from '../images/profile.jpg';
+import pic from '../images/profile.png';
 
 export type Page = { children: React.ReactNode; current: Route };
 
@@ -15,14 +15,14 @@ export const Page = ({ children, current }: Page) => (
   <section className="max-w-4xl mx-auto ">
     <header className="flex flex-row items-center px-6 pt-12 pb-8 md:justify-between">
       <div className="flex flex-row items-center w-full">
-        <img className="rounded-xl h-16 mr-2 shadow-inner" src={pic} alt="Matt Phillips" />
+        <img className="rounded-full h-16 mr-4" src={pic} alt="Matt Phillips" />
         <h3 className="m-0">Matt Phillips</h3>
       </div>
       <ul className="hidden md:flex flex-row">
-        <li className={`mr-4 ${getColour(current, Route.HOME)}`}>
+        <li className={`mr-8 ${getColour(current, Route.HOME)}`}>
           <Link to={Route.HOME}>Blog</Link>
         </li>
-        <li className={`mr-4 ${getColour(current, Route.ABOUT)}`}>
+        <li className={`mr-8 ${getColour(current, Route.ABOUT)}`}>
           <Link to={Route.ABOUT}>About</Link>
         </li>
         <li className={getColour(current, Route.STATS)}>
