@@ -11,6 +11,10 @@ module.exports = {
       twitter: {
         handle: 'mattphillipsio',
         url: 'https://twitter.com/mattphillipsio'
+      },
+      linkedIn: {
+        handle: 'mattphillipsio',
+        url: 'https://linkedin.com/in/mattphillipsio'
       }
     }
   },

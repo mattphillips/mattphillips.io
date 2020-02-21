@@ -11,6 +11,7 @@ import { Link } from './Link';
 import { Route } from '../Config';
 import pic from '../images/profile.png';
 import { Github } from './icons/Github';
+import { LinkedIn } from './icons/LinkedIn';
 import { Twitter } from './icons/Twitter';
 
 type Article = { fields: { slug: string }; frontmatter: { title: string } };
@@ -63,7 +64,8 @@ export default ({
       siteMetadata: {
         social: {
           github: { url: github },
-          twitter: { url: twitter }
+          twitter: { url: twitter },
+          linkedIn: { url: linkedIn }
         }
       }
     },
@@ -150,6 +152,11 @@ export default ({
                 <Twitter />
               </span>
             </ExternalLink>
+            <ExternalLink className="ml-4" href={linkedIn}>
+              <span className="flex items-center justify-center text-purple-100 h-10 w-10 hover:text-purple-300">
+                <LinkedIn />
+              </span>
+            </ExternalLink>
           </div>
         </div>
       </div>
@@ -186,6 +193,9 @@ export const pageQuery = graphql`
             url
           }
           twitter {
+            url
+          }
+          linkedIn {
             url
           }
         }
