@@ -132,14 +132,14 @@ export default ({
                 </nav>
               </footer>
             </div>
-            <div className="flex justify-center bg-purple-500 w-full p-2">
+            <div className="flex justify-center bg-purple-500 w-full p-2 pb-6">
               <ExternalLink href="#">
-                <span className="flex items-center justify-center text-purple-100 h-10 w-10">
+                <span className="flex items-center justify-center text-purple-100 h-10 w-10 hover:text-purple-300">
                   <Github />
                 </span>
               </ExternalLink>
               <ExternalLink className="ml-4" href="#">
-                <span className="flex items-center justify-center text-purple-100 h-10 w-10">
+                <span className="flex items-center justify-center text-purple-100 h-10 w-10 hover:text-purple-300">
                   <Twitter />
                 </span>
               </ExternalLink>
