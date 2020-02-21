@@ -21,6 +21,7 @@ type Post = {
   pageContext: {
     next?: Article;
     previous?: Article;
+    slug: string;
   };
 };
 
@@ -62,6 +63,8 @@ export default ({
   data: {
     site: {
       siteMetadata: {
+        url,
+        repo,
         social: {
           github: { url: github },
           twitter: { url: twitter },
@@ -71,7 +74,7 @@ export default ({
     },
     markdownRemark: { frontmatter, html, timeToRead }
   },
-  pageContext: { next, previous }
+  pageContext: { next, previous, slug }
 }: Post) => (
   <main>
     <SEO title={frontmatter.title} description={frontmatter.description} />
@@ -105,9 +108,13 @@ export default ({
             <section className={styles.post} dangerouslySetInnerHTML={{ __html: html }} />
             <footer className="py-8">
               <p>
-                <ExternalLink href="#">Discuss on Twitter</ExternalLink>
+                <ExternalLink href={`https://mobile.twitter.com/search?q=${encodeURIComponent(url + slug)}`}>
+                  Discuss on Twitter
+                </ExternalLink>
                 <span className="text-2xl"> • </span>
-                <ExternalLink href="#">Edit on GitHub</ExternalLink>
+                <ExternalLink href={`${repo}/edit/master/src/posts/${slug.replace(/\//g, '')}/index.md`}>
+                  Edit on GitHub
+                </ExternalLink>
               </p>
               <hr />
               <div className="flex flex-row items-start md:items-center mb-4">
@@ -115,7 +122,7 @@ export default ({
                 <p>
                   Hey I'm Matt 👋, well done for reading this far down the page. If you feel some type of way about what
                   I've written above, I'd love to hear from you — hit me up on{' '}
-                  <ExternalLink href="">Twitter</ExternalLink>.
+                  <ExternalLink href={twitter}>Twitter</ExternalLink>.
                 </p>
               </div>
 
@@ -177,7 +184,7 @@ const ExternalLink = ({
   <a
     className={`${className} font-semibold text-base text-purple-500 hover:text-purple-300`}
     href={href}
-    rel="noopener"
+    rel="noopener noreferrer"
     target="_blank"
   >
     {children}
@@ -188,6 +195,8 @@ export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
     site {
       siteMetadata {
+        url
+        repo
         social {
           github {
             url

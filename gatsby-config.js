@@ -3,6 +3,8 @@ module.exports = {
     title: 'Matt Phillips',
     description: `TBD.`,
     author: `Matt Phillips`,
+    url: 'https://mattphillips.io',
+    repo: 'https://github.com/mattphillips/mattphillips.io',
     social: {
       github: {
         handle: 'mattphillips',
